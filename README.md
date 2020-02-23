@@ -1,8 +1,8 @@
-# CppND-System-Monitor
+# System Monitor Udacity ND
 
 System Monitor Project in the Object Oriented Programming Course of the [Udacity C++ Nanodegree Program]
 
-![System Monitor](images/monitor.png)
+![System Monitor](images/sysMonitor.png)
 
 ## ncurses
 [ncurses](https://www.gnu.org/software/ncurses/) is a library that facilitates text-based graphical output in the terminal. This project relies on ncurses for display output.
@@ -24,4 +24,3 @@ This project uses [Make](https://www.gnu.org/software/make/). The Makefile has f
 2. Build the project: `make build`
 
 3. Run the resulting executable: `./build/monitor`
-![Starting System Monitor](images/starting_monitor.png)
