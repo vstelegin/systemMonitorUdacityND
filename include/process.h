@@ -11,26 +11,24 @@ class Process {
  public:
   Process(int pid, Processor &);
   int Pid();
-  void Pid(int pid);                              // TODO: See src/process.cpp
-  std::string User();                      // TODO: See src/process.cpp
+  void Pid(int pid);                              
+  std::string User();                      
   std::string Command(); 
   void SetCommand();
-  float & CpuUtilization();                 // TODO: See src/process.cpp
+  float & CpuUtilization();                
   void CalculateCpuUtilization(Processor &);
   void Update(Processor &);
-  std::string Ram();                       // TODO: See src/process.cpp 
-  long int UpTime();                       // TODO: See src/process.cpp
-  bool operator<(const Process & a);  // TODO: See src/process.cpp
+  std::string Ram();                       
+  long int UpTime();                      
+  bool operator<(const Process & a); 
   float ram_;
   
-  // TODO: Declare any necessary private members
+
  private:
     int pid_;
-//  std::string user_;
     std::string command_;
     long prevActive_ = 0;
     float cpuUtilization_;
-//  long int uptime_;
 };
 
 #endif

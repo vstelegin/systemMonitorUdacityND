@@ -22,11 +22,11 @@ void Process::Update(Processor & cpu){
     Ram();
     CalculateCpuUtilization(cpu);
 }
-// TODO: Return this process's ID
+// Return this process's ID
 int Process::Pid() { return pid_; }
 void Process::Pid(int pid) { pid_ = pid; }
 
-// TODO: Return this process's CPU utilization
+// Return this process's CPU utilization
 float & Process::CpuUtilization() {
     return cpuUtilization_;
 }
@@ -42,7 +42,7 @@ void Process::CalculateCpuUtilization(Processor &cpu) {
     cpuUtilization_ = hertz * activeDifference;
     prevActive_ = currentActive;
 }
-// TODO: Return the command that generated this process
+// Return the command that generated this process
 string Process::Command() {
     return command_;
 }
@@ -50,22 +50,22 @@ string Process::Command() {
 void Process::SetCommand(){
     command_ = LinuxParser::Command(pid_);
 }
-// TODO: Return this process's memory utilization
+// Return this process's memory utilization
 string Process::Ram() {
     return LinuxParser::Ram(pid_, ram_); 
 }
 
-// TODO: Return the user (name) that generated this process
+// Return the user (name) that generated this process
 string Process::User() {
     return LinuxParser::User(pid_);
 }
 
-// TODO: Return the age of this process (in seconds)
+// Return the age of this process (in seconds)
 long int Process::UpTime() {
     return LinuxParser::UpTime(pid_);
 }
 
-// TODO: Overload the "less than" comparison operator for Process objects
+// Overload the "less than" comparison operator for Process objects
 bool Process::operator<(Process const &a) {
     return a.cpuUtilization_ < cpuUtilization_;
 }
