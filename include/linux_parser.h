@@ -4,7 +4,7 @@
 #include <fstream>
 #include <regex>
 #include <string>
-
+#include <iostream>
 namespace LinuxParser {
 // Paths
 const std::string kProcDirectory{"/proc/"};
@@ -17,6 +17,13 @@ const std::string kMeminfoFilename{"/meminfo"};
 const std::string kVersionFilename{"/version"};
 const std::string kOSPath{"/etc/os-release"};
 const std::string kPasswordPath{"/etc/passwd"};
+const std::string kSlash{"/"};
+
+//Names
+const std::string nVmSize{"VmSize"};
+const std::string nUid{"Uid"};
+const std::string nUidPrefix{"x:"};
+const std::string nProcsRunning{"procs_running"};
 
 // System
 float MemoryUtilization();
@@ -48,10 +55,16 @@ long IdleJiffies();
 
 // Processes
 std::string Command(int pid);
-std::string Ram(int pid);
+std::string Ram(int pid, float & ram);
 std::string Uid(int pid);
 std::string User(int pid);
 long int UpTime(int pid);
-};  // namespace LinuxParser
+};  
+
+//Utility
+void StringFromStreamLine(std::ifstream &, std::string &, int);
+void SkipStreamElements(std::istringstream & ss, int amount);
+// namespace LinuxParser
+
 
 #endif

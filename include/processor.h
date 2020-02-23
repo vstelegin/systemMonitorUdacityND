@@ -3,10 +3,15 @@
 
 class Processor {
  public:
-  float Utilization();  // TODO: See src/processor.cpp
+  float Utilization();
+  long TotalDifference();
+  void CalculateUtilization();
 
-  // TODO: Declare any necessary private members
  private:
+  long prevTotal_ = 0;
+  long prevIdle_ = 0;
+  long totalDifference_ = 0;
+  float utilization_ = 0.0f;
 };
 
 #endif

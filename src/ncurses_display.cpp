@@ -72,7 +72,7 @@ void NCursesDisplay::DisplayProcesses(std::vector<Process>& processes,
   for (int i = 0; i < n; ++i) {
     mvwprintw(window, ++row, pid_column, to_string(processes[i].Pid()).c_str());
     mvwprintw(window, row, user_column, processes[i].User().c_str());
-    float cpu = processes[i].CpuUtilization() * 100;
+    float cpu = processes[i].CpuUtilization();
     mvwprintw(window, row, cpu_column, to_string(cpu).substr(0, 4).c_str());
     mvwprintw(window, row, ram_column, processes[i].Ram().c_str());
     mvwprintw(window, row, time_column,
@@ -98,12 +98,14 @@ void NCursesDisplay::Display(System& system, int n) {
     init_pair(2, COLOR_GREEN, COLOR_BLACK);
     box(system_window, 0, 0);
     box(process_window, 0, 0);
+    system.UpdateCpu();
+    system.LoadProcesses();     //Load processes data
     DisplaySystem(system, system_window);
     DisplayProcesses(system.Processes(), process_window, n);
     wrefresh(system_window);
     wrefresh(process_window);
     refresh();
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   }
   endwin();
 }
